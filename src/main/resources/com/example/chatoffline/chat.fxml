@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.chatoffline.ChatController" spacing="10" padding="10, 10, 10, 10">
+      fx:controller="com.example.chatoffline.ChatController" spacing="10" padding="10">
     <TextArea fx:id="chatArea" prefHeight="200" editable="false" />
     <HBox spacing="10">
         <TextField fx:id="inputField" HBox.hgrow="ALWAYS" />
