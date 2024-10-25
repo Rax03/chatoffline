@@ -1,50 +1,61 @@
 package com.example.chatoffline;
 
-import java.time.LocalDateTime;
-
 public class Mensaje {
-    private String de;
-    private String para;
-    private LocalDateTime fecha;
-    private String contenido;
+    private String remitente;
+    private String destinatario;
+    private String texto;
+    private String fecha;
 
-    public Mensaje(String de, String para, String contenido) {
-        this.de = de;
-        this.para = para;
-        this.fecha = LocalDateTime.now();
-        this.contenido = contenido;
-    }
-
-    public String getDe() {
-        return de;
-    }
-
-    public void setDe(String de) {
-        this.de = de;
-    }
-
-    public String getPara() {
-        return para;
-    }
-
-    public void setPara(String para) {
-        this.para = para;
-    }
-
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
+    // Constructor
+    public Mensaje(String remitente, String destinatario, String texto, String fecha) {
+        this.remitente = remitente;
+        this.destinatario = destinatario;
+        this.texto = texto;
         this.fecha = fecha;
     }
 
-    public String getContenido() {
-        return contenido;
+    // Getters
+    public String getRemitente() {
+        return remitente;
     }
 
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
+    public String getDestinatario() {
+        return destinatario;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    // Setters
+    public void setRemitente(String remitente) {
+        this.remitente = remitente;
+    }
+
+    public void setDestinatario(String destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    // toString method for easy display
+    @Override
+    public String toString() {
+        return "Mensaje{" +
+                "remitente='" + remitente + '\'' +
+                ", destinatario='" + destinatario + '\'' +
+                ", texto='" + texto + '\'' +
+                ", fecha='" + fecha + '\'' +
+                '}';
     }
 }
-

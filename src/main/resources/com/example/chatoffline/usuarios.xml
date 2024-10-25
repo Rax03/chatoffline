@@ -1,0 +1,28 @@
+<chat>
+    <usuarios>
+        <usuario id="1">
+            <nombre>Juan</nombre>
+            <correo>juan@example.com</correo>
+            <fechaRegistro>2024-10-23</fechaRegistro>
+        </usuario>
+        <usuario id="2">
+            <nombre>Ana</nombre>
+            <correo>ana@example.com</correo>
+            <fechaRegistro>2024-10-23</fechaRegistro>
+        </usuario>
+    </usuarios>
+    <mensajes>
+        <mensaje>
+            <remitente>1</remitente>
+            <destinatario>2</destinatario>
+            <texto>Hola, ¿cómo estás?</texto>
+            <fecha>2024-10-24T13:22:00</fecha>
+        </mensaje>
+        <mensaje>
+            <remitente>2</remitente>
+            <destinatario>1</destinatario>
+            <texto>Bien, ¿y tú?</texto>
+            <fecha>2024-10-24T13:23:00</fecha>
+        </mensaje>
+    </mensajes>
+</chat>

@@ -3,14 +3,15 @@ package com.example.chatoffline;
 public class Usuario {
     private String id;
     private String nombre;
-    private String email;
+    private String correo;
 
-    public Usuario(String id, String nombre, String email) {
+    public Usuario(String id, String nombre, String correo) {
         this.id = id;
         this.nombre = nombre;
-        this.email = email;
+        this.correo = correo;
     }
 
+    // Getters y Setters
     public String getId() {
         return id;
     }
@@ -27,20 +28,11 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id='" + id + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 }
