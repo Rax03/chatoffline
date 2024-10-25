@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<usuarios>
+    <usuario id="23">
+        <nombre>rafa</nombre>
+        <correo>rafa@gmail.com</correo>
+    </usuario>
+</usuarios>

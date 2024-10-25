@@ -6,7 +6,6 @@ public class Mensaje {
     private String texto;
     private String fecha;
 
-    // Constructor
     public Mensaje(String remitente, String destinatario, String texto, String fecha) {
         this.remitente = remitente;
         this.destinatario = destinatario;
@@ -14,48 +13,35 @@ public class Mensaje {
         this.fecha = fecha;
     }
 
-    // Getters
     public String getRemitente() {
         return remitente;
+    }
+
+    public void setRemitente(String remitente) {
+        this.remitente = remitente;
     }
 
     public String getDestinatario() {
         return destinatario;
     }
 
-    public String getTexto() {
-        return texto;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    // Setters
-    public void setRemitente(String remitente) {
-        this.remitente = remitente;
-    }
-
     public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
+    }
+
+    public String getTexto() {
+        return texto;
     }
 
     public void setTexto(String texto) {
         this.texto = texto;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public String getFecha() {
+        return fecha;
     }
 
-    // toString method for easy display
-    @Override
-    public String toString() {
-        return "Mensaje{" +
-                "remitente='" + remitente + '\'' +
-                ", destinatario='" + destinatario + '\'' +
-                ", texto='" + texto + '\'' +
-                ", fecha='" + fecha + '\'' +
-                '}';
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

@@ -9,6 +9,7 @@ public class Chat {
 
     public void registrarUsuario(Usuario usuario) {
         usuarios.add(usuario);
+        XMLHandler.guardarUsuarios(usuarios);
     }
 
     public List<Usuario> getUsuarios() {
@@ -17,7 +18,7 @@ public class Chat {
 
     public void enviarMensaje(Mensaje mensaje) {
         mensajes.add(mensaje);
-        XMLHandler.guardarMensajes(mensajes); // Suponiendo que tienes una clase XMLHandler para manejar la escritura en el XML
+        XMLHandler.guardarMensajes(mensajes);
     }
 
     public List<Mensaje> getMensajes() {

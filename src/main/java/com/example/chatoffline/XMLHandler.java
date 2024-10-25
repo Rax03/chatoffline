@@ -17,44 +17,35 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class XMLHandler {
-    private static final String FILE_PATH = "usuarios.xml";
+    private static final String FILE_PATH_USUARIOS = "usuarios.xml";
+    private static final String FILE_PATH_MENSAJES = "mensajes.xml";
 
-    public static void main(String[] args) {
-        ensureFileExists();
-        List<Usuario> usuarios = cargarUsuarios();
-        for (Usuario usuario : usuarios) {
-            System.out.println("ID: " + usuario.getId());
-            System.out.println("Nombre: " + usuario.getNombre());
-            System.out.println("Correo: " + usuario.getCorreo());
-        }
-    }
-
-    private static void ensureFileExists() {
-        File file = new File(FILE_PATH);
+    public static void ensureFileExists(String filePath, String rootElementName) {
+        File file = new File(filePath);
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                inicializarArchivo(); // Inicializa el archivo con una estructura básica
+                inicializarArchivo(filePath, rootElementName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private static void inicializarArchivo() {
+    private static void inicializarArchivo(String filePath, String rootElementName) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.newDocument();
 
-            Element rootElement = doc.createElement("usuarios");
+            Element rootElement = doc.createElement(rootElementName);
             doc.appendChild(rootElement);
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(FILE_PATH));
+            StreamResult result = new StreamResult(new File(filePath));
             transformer.transform(source, result);
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,9 +53,10 @@ public class XMLHandler {
     }
 
     public static List<Usuario> cargarUsuarios() {
+        ensureFileExists(FILE_PATH_USUARIOS, "usuarios");
         List<Usuario> usuarios = new ArrayList<>();
         try {
-            File file = new File(FILE_PATH);
+            File file = new File(FILE_PATH_USUARIOS);
             if (!file.exists()) return usuarios;
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -116,42 +108,7 @@ public class XMLHandler {
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(FILE_PATH));
-            transformer.transform(source, result);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public static void guardarMensajes(List<Mensaje> mensajes) {
-        try {
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.newDocument();
-
-            Element rootElement = doc.createElement("chat");
-            doc.appendChild(rootElement);
-
-            Element mensajesElement = doc.createElement("mensajes");
-            rootElement.appendChild(mensajesElement);
-
-            for (Mensaje mensaje : mensajes) {
-                Element mensajeElement = doc.createElement("mensaje");
-                mensajeElement.setAttribute("remitente", mensaje.getRemitente());
-                mensajeElement.setAttribute("destinatario", mensaje.getDestinatario());
-                mensajeElement.setAttribute("fecha", mensaje.getFecha());
-                mensajesElement.appendChild(mensajeElement);
-
-                Element contenido = doc.createElement("texto");
-                contenido.appendChild(doc.createTextNode(mensaje.getTexto()));
-                mensajeElement.appendChild(contenido);
-            }
-
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File(FILE_PATH));
+            StreamResult result = new StreamResult(new File(FILE_PATH_USUARIOS));
             transformer.transform(source, result);
 
         } catch (Exception e) {
@@ -160,9 +117,10 @@ public class XMLHandler {
     }
 
     public static List<Mensaje> cargarMensajes() {
+        ensureFileExists(FILE_PATH_MENSAJES, "mensajes");
         List<Mensaje> mensajes = new ArrayList<>();
         try {
-            File file = new File(FILE_PATH);
+            File file = new File(FILE_PATH_MENSAJES);
             if (!file.exists()) return mensajes;
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -187,5 +145,37 @@ public class XMLHandler {
         }
         return mensajes;
     }
-}
 
+    public static void guardarMensajes(List<Mensaje> mensajes) {
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.newDocument();
+
+            Element rootElement = doc.createElement("mensajes");
+            doc.appendChild(rootElement);
+
+            for (Mensaje mensaje : mensajes) {
+                Element mensajeElement = doc.createElement("mensaje");
+                mensajeElement.setAttribute("remitente", mensaje.getRemitente());
+                mensajeElement.setAttribute("destinatario", mensaje.getDestinatario());
+                mensajeElement.setAttribute("fecha", mensaje.getFecha());
+                rootElement.appendChild(mensajeElement);
+
+                Element contenido = doc.createElement("texto");
+                contenido.appendChild(doc.createTextNode(mensaje.getTexto()));
+                mensajeElement.appendChild(contenido);
+            }
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(FILE_PATH_MENSAJES));
+            transformer.transform(source, result);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
