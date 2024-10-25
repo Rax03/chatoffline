@@ -4,4 +4,12 @@
         <nombre>rafa</nombre>
         <correo>rafa@gmail.com</correo>
     </usuario>
+    <usuario id="1">
+        <nombre>pepe</nombre>
+        <correo>pepe</correo>
+    </usuario>
+    <usuario id="16">
+        <nombre>maricarmen</nombre>
+        <correo>mari@gmail.com</correo>
+    </usuario>
 </usuarios>

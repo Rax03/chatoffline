@@ -1,11 +1,19 @@
 package com.example.chatoffline;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Chat {
     private List<Usuario> usuarios = new ArrayList<>();
     private List<Mensaje> mensajes = new ArrayList<>();
+
+    public Chat() {
+        usuarios = XMLHandler.cargarUsuarios();
+        mensajes = XMLHandler.cargarMensajes();
+    }
 
     public void registrarUsuario(Usuario usuario) {
         usuarios.add(usuario);
@@ -32,5 +40,19 @@ public class Chat {
                     mensaje.getRemitente(), mensaje.getDestinatario(), mensaje.getFecha(), mensaje.getTexto()));
         }
         return resumen.toString();
+    }
+
+    public void guardarResumenEnArchivo(String remitenteId, String filePath) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (Mensaje mensaje : mensajes) {
+                if (mensaje.getRemitente().equals(remitenteId)) {
+                    writer.write(String.format("Para: %s, Fecha: %s, Mensaje: %s\n",
+                            mensaje.getDestinatario(), mensaje.getFecha(), mensaje.getTexto()));
+                }
+            }
+            System.out.println("Resumen guardado en " + filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

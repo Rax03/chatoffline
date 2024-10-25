@@ -14,7 +14,8 @@ public class Main {
             System.out.println("2. Enviar Mensaje");
             System.out.println("3. Ver Mensajes");
             System.out.println("4. Generar Informe");
-            System.out.println("5. Salir");
+            System.out.println("5. Guardar Resumen en Archivo");
+            System.out.println("6. Salir");
             System.out.print("Elige una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer
@@ -32,6 +33,9 @@ public class Main {
                     generarInforme(chat, scanner);
                     break;
                 case 5:
+                    guardarResumenEnArchivo(chat, scanner);
+                    break;
+                case 6:
                     System.exit(0);
                     break;
                 default:
@@ -89,5 +93,13 @@ public class Main {
         }
         System.out.println("Resumen de mensajes del remitente " + remitenteId + ":");
         System.out.println(resumen.toString());
+    }
+
+    public static void guardarResumenEnArchivo(Chat chat, Scanner scanner) {
+        System.out.print("ID del remitente: ");
+        String remitenteId = scanner.nextLine();
+        System.out.print("Ruta del archivo: ");
+        String filePath = scanner.nextLine();
+        chat.guardarResumenEnArchivo(remitenteId, filePath);
     }
 }

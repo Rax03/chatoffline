@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a84aac4-a0c4-4a33-bc62-d1d4bec9f9d1" name="Changes" comment="cambio sin interfas grafica">
+    <list default="true" id="6a84aac4-a0c4-4a33-bc62-d1d4bec9f9d1" name="Changes" comment="arreglando errores">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mensajes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mensajes.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/chatoffline/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/chatoffline/Chat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/chatoffline/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/chatoffline/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/chatoffline/Mensaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/chatoffline/Mensaje.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/chatoffline/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/chatoffline/XMLHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/chatoffline/usuarios.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usuarios.xml" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,14 +111,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729842912439</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="arreglando errores">
+      <option name="closed" value="true" />
+      <created>1729845246016</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729845246016</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cambio por averia" />
     <MESSAGE value="cambio" />
     <MESSAGE value="cambio sin interfas grafica" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambio sin interfas grafica" />
+    <MESSAGE value="arreglando errores" />
+    <option name="LAST_COMMIT_MESSAGE" value="arreglando errores" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
