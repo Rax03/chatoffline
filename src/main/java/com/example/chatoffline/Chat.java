@@ -11,13 +11,21 @@ public class Chat {
     private List<Mensaje> mensajes = new ArrayList<>();
 
     public Chat() {
-        usuarios = XMLHandler.cargarUsuarios();
-        mensajes = XMLHandler.cargarMensajes();
+        try {
+            usuarios = XMLHandler.cargarUsuarios();
+            mensajes = XMLHandler.cargarMensajes();
+        } catch (Exception e) {
+            System.err.println("Error al cargar datos: " + e.getMessage());
+        }
     }
 
     public void registrarUsuario(Usuario usuario) {
-        usuarios.add(usuario);
-        XMLHandler.guardarUsuarios(usuarios);
+        try {
+            usuarios.add(usuario);
+            XMLHandler.guardarUsuarios(usuarios);
+        } catch (Exception e) {
+            System.err.println("Error al registrar usuario: " + e.getMessage());
+        }
     }
 
     public List<Usuario> getUsuarios() {
@@ -25,8 +33,12 @@ public class Chat {
     }
 
     public void enviarMensaje(Mensaje mensaje) {
-        mensajes.add(mensaje);
-        XMLHandler.guardarMensajes(mensajes);
+        try {
+            mensajes.add(mensaje);
+            XMLHandler.guardarMensajes(mensajes);
+        } catch (Exception e) {
+            System.err.println("Error al enviar mensaje: " + e.getMessage());
+        }
     }
 
     public List<Mensaje> getMensajes() {
@@ -52,7 +64,7 @@ public class Chat {
             }
             System.out.println("Resumen guardado en " + filePath);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Error al guardar resumen en archivo: " + e.getMessage());
         }
     }
 }

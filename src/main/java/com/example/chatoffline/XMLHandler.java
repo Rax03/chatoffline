@@ -24,10 +24,13 @@ public class XMLHandler {
         File file = new File(filePath);
         if (!file.exists()) {
             try {
-                file.createNewFile();
-                inicializarArchivo(filePath, rootElementName);
+                if (file.createNewFile()) {
+                    inicializarArchivo(filePath, rootElementName);
+                } else {
+                    System.out.println("No se pudo crear el archivo: " + filePath);
+                }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println("Error al crear el archivo: " + e.getMessage());
             }
         }
     }
@@ -48,7 +51,7 @@ public class XMLHandler {
             StreamResult result = new StreamResult(new File(filePath));
             transformer.transform(source, result);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error al inicializar el archivo: " + e.getMessage());
         }
     }
 
@@ -57,8 +60,6 @@ public class XMLHandler {
         List<Usuario> usuarios = new ArrayList<>();
         try {
             File file = new File(FILE_PATH_USUARIOS);
-            if (!file.exists()) return usuarios;
-
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
@@ -76,7 +77,7 @@ public class XMLHandler {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error al cargar los usuarios: " + e.getMessage());
         }
         return usuarios;
     }
@@ -110,9 +111,8 @@ public class XMLHandler {
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File(FILE_PATH_USUARIOS));
             transformer.transform(source, result);
-
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error al guardar los usuarios: " + e.getMessage());
         }
     }
 
@@ -121,8 +121,6 @@ public class XMLHandler {
         List<Mensaje> mensajes = new ArrayList<>();
         try {
             File file = new File(FILE_PATH_MENSAJES);
-            if (!file.exists()) return mensajes;
-
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
@@ -141,7 +139,7 @@ public class XMLHandler {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error al cargar los mensajes: " + e.getMessage());
         }
         return mensajes;
     }
@@ -173,9 +171,8 @@ public class XMLHandler {
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File(FILE_PATH_MENSAJES));
             transformer.transform(source, result);
-
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("Error al guardar los mensajes: " + e.getMessage());
         }
     }
 }

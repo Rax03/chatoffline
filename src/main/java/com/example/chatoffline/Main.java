@@ -19,28 +19,32 @@ public class Main {
             System.out.print("Elige una opción: ");
             int opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer
-            switch (opcion) {
-                case 1:
-                    registrarUsuario(chat, scanner);
-                    break;
-                case 2:
-                    enviarMensaje(chat, scanner);
-                    break;
-                case 3:
-                    verMensajes(chat);
-                    break;
-                case 4:
-                    generarInforme(chat, scanner);
-                    break;
-                case 5:
-                    guardarResumenEnArchivo(chat, scanner);
-                    break;
-                case 6:
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Opción no válida.");
-                    break;
+            try {
+                switch (opcion) {
+                    case 1:
+                        registrarUsuario(chat, scanner);
+                        break;
+                    case 2:
+                        enviarMensaje(chat, scanner);
+                        break;
+                    case 3:
+                        verMensajes(chat);
+                        break;
+                    case 4:
+                        generarInforme(chat, scanner);
+                        break;
+                    case 5:
+                        guardarResumenEnArchivo(chat, scanner);
+                        break;
+                    case 6:
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Opción no válida.");
+                        break;
+                }
+            } catch (Exception e) {
+                System.err.println("Error: " + e.getMessage());
             }
         }
     }

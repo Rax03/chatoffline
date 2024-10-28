@@ -12,4 +12,16 @@
         <nombre>maricarmen</nombre>
         <correo>mari@gmail.com</correo>
     </usuario>
+    <usuario id="e">
+        <nombre>e</nombre>
+        <correo>e</correo>
+    </usuario>
+    <usuario id="alberto">
+        <nombre>alberto</nombre>
+        <correo>alberto</correo>
+    </usuario>
+    <usuario id="ww">
+        <nombre>ee</nombre>
+        <correo>11</correo>
+    </usuario>
 </usuarios>

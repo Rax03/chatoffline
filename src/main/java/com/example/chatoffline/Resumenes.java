@@ -19,7 +19,6 @@ public class Resumenes {
         resumenes.generarResumenPorRemitente("1");
     }
 
-    // Método para generar un resumen de mensajes enviados por un remitente específico
     public void generarResumenPorRemitente(String remitenteId) {
         List<Mensaje> mensajes = obtenerMensajes();
         List<Mensaje> mensajesFiltrados = mensajes.stream()
@@ -32,7 +31,6 @@ public class Resumenes {
         });
     }
 
-    // Método para obtener los mensajes del archivo XML
     private List<Mensaje> obtenerMensajes() {
         List<Mensaje> mensajes = new ArrayList<>();
         try {
